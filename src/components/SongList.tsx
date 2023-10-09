@@ -15,17 +15,11 @@ import {
 function SongList(props: any) {
   const { bpm, showSongs } = props;
   const [songs, setSongs] = useState([]);
-  const [rawList, setRawList] = useState([]);
   const [listStart, setListStart] = useState(0);
   const [listEnd, setListEnd] = useState(12);
   const [pageCounter, setPageCounter] = useState(1);
-  const [prevRawList, setPrevRawList] = useState([]);
 
-  useEffect(() => {
-    setPrevRawList(rawList);
-  }, [rawList]);
-
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading } = useQuery(
     ["tempoData", bpm],
     () => fetchTempoData(bpm),
     {
