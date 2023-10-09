@@ -1,0 +1,469 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  --test-border: 1px solid black;
+  --primary: #81A1BC;
+  --secondary: #ABC0D2;
+  --ternary: #D5E0E9;
+  --primary-overlay: rgba(129, 161, 188, 0.75)
+}
+
+.metronome-ctn {
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+  align-items: center;
+  width: 100svw;
+  flex-direction: column;
+}
+
+.metro-right {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.metronome {
+  width: clamp(300px, 80%, 500px);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  background-color: #81A1BC;
+  border-radius: 26px;
+  box-shadow: var(--ternary) 15px 15px 1px;
+}
+
+.metronome h1 {
+  /* display: none; */
+  /* border: 1px solid red; */
+  color: white;
+  font-size: 3em;
+  /* text-transform: uppercase; */
+  font-family: Helvetica, sans-serif
+}
+
+.metro-display {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary);
+  height: 4em;
+}
+
+
+.metro-display.bpm {
+  display: flex;
+  border: none;
+  height: 1em;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+
+.metro-btn.decrement {
+  text-align: center;
+  align-items: center;
+  border-radius: 16px 0 0 16px;
+}
+
+.metro-btn.decrement:hover {
+  background-color: white;
+  color: var(--primary)
+}
+
+.metro-btn.increment {
+  border-radius: 0px 16px 16px 0px;
+}
+
+.metro-btn.increment:hover {
+  background-color: white;
+  color: var(--primary)
+}
+
+.metro-display>.metro-btn {
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  font-size: 3em;
+  color: white
+}
+
+.metro-display>.metro-btn:hover {
+  background-color: white;
+}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 100%;
+  /* Specific width is required for Firefox. */
+  background: transparent;
+  /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* =============================================================================== Range styling ==================================================================== */
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 18px 0;
+  width: 100%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 90%;
+  height: 8.4px;
+  cursor: pointer;
+  background: var(--secondary);
+  border-radius: 1.3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 30px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -9px;
+}
+
+input[type=range]::-moz-range-track {
+  height: 8.4px;
+  width: 80%;
+  cursor: pointer;
+  background: #3071a9;
+  border-radius: 1.3px;
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  width: 80%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+/* =============================================================================== Range styling ==================================================================== */
+
+
+.noSelect {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.noSelect:focus {
+  outline: none !important;
+}
+
+.metro-controls {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  padding: 1em 0 0 0
+}
+
+.metro-btn {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.play {
+  box-sizing: content-box;
+  z-index: 10;
+  border: .5em solid var(--primary);
+  /* height: 55%;
+    width: 55%; */
+  height: 10em;
+  width: 10em;
+  background-color: var(--ternary);
+  border-radius: 250px;
+  position: relative;
+  transition: ease-in 150ms;
+  margin-bottom: 4em;
+}
+
+.play:hover {
+  background-color: white;
+
+}
+
+.play:after {
+  content: '';
+  height: 50%;
+  width: 45%;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  background-image: url('../assets/playicon.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.metro-btn-tap {
+  height: 30%;
+  width: 35%;
+  border: none;
+  background-color: var(--ternary);
+  border-radius: 25px;
+  position: absolute;
+  top: 20%;
+  right: 0%;
+  z-index: 9;
+  color: white;
+  transition: ease-in 150ms;
+  cursor: pointer
+}
+
+/* .metro-btn-tap:after { */
+.metro-btn-tap .outer {
+  content: '';
+  width: 30px;
+  height: 2em;
+  position: relative;
+  border: 5px solid var(--primary);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(30%, -50%)
+}
+
+/* .metro-btn-tap:before { */
+.metro-btn-tap .inner {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  border: 5px solid var(--primary);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  transition: ease-in 250ms transform
+}
+
+
+.metro-btn-tap:hover {
+  background-color: white;
+  transform: scale(1.05)
+}
+
+.metro-btn-generate {
+  height: 30%;
+  width: 35%;
+  border: none;
+  background-color: var(--ternary);
+  border-radius: 25px;
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  z-index: 9;
+  color: white;
+  transition: ease-in 150ms;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.metro-btn-generate:after {
+  content: '';
+  width: 2em;
+  height: .85em;
+  position: absolute;
+  border-top: 5px solid var(--primary);
+  border-bottom: 5px solid var(--primary);
+  top: 50%;
+  left: 20%
+}
+
+.metro-btn-generate:before {
+  content: '';
+  width: 2em;
+  height: .5em;
+  position: absolute;
+  top: 38%;
+  left: 20%;
+  border-bottom: 5px solid var(--primary)
+}
+
+.metro-btn-generate:hover {
+  opacity: 100%;
+  background-color: white;
+  transform: scale(1.05);
+}
+
+
+.pause {
+  box-sizing: content-box;
+  z-index: 10;
+  border: .5em solid var(--primary);
+  height: 10em;
+  width: 10em;
+  background-color: var(--ternary);
+  border-radius: 250px;
+  position: relative;
+  color: white;
+  margin-bottom: 4em
+}
+
+.pause:after {
+  content: '';
+  height: 55%;
+  width: 40%;
+  position: absolute;
+  top: 23%;
+  left: 30%;
+  background-image: url('../../assets/pauseicon-final.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.pause:hover {
+  background-color: white;
+}
+
+/*============================================= Dropdown Styling ======================================= */
+
+.metro-dropdown-header {
+  padding: 1em;
+  background-color: var(--secondary);
+  border-radius: 26px;
+  width: 100%;
+  transition: ease-in 150ms;
+  cursor: pointer;
+}
+
+.metro-dropdown-header:hover {
+  background-color: var(--ternary);
+}
+
+.metro-dropdown {
+  transition: cubic-bezier(1, 0, 0, 1) 250ms;
+  position: absolute;
+  height: 20%;
+  width: 100%;
+}
+
+.metro-dropdown.open {
+  /* top: 1%; */
+  bottom: -97%;
+  right: 1%;
+  height: 100%;
+  width: 100%;
+  transition: ease-in 100ms;
+  padding: .5em
+}
+
+.metro-dropdown.closed {
+  transition: ease-in 100ms;
+  transform: translateY(-45%);
+}
+
+.metro-dropdown-item {
+  transition: ease-in 150ms;
+  padding: 1em;
+  background-color: var(--secondary);
+  border-radius: 26px;
+  width: 100%;
+  margin: .5em 0
+}
+
+.metro-dropdown-item:hover {
+  background-color: var(--ternary);
+}

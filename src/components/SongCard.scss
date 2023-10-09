@@ -1,0 +1,36 @@
+.songcard {
+    width: content;
+    height: 3em;
+    margin-bottom: 0.2em;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--ternary);
+    border-radius: 6px;
+    color: black;
+    transition: ease-in 250ms
+  }
+  
+  .songcard:hover {
+    background-color: white;
+  }
+  
+  
+  .songcard-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .songcard-left i {
+    padding: .2em;
+    font-size: 2em;
+    color: var(--primary)
+  }
+  
+  
+  
+  
+  .songcard-artist {
+    font-size: .75em
+  }

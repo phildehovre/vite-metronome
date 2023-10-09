@@ -1,0 +1,38 @@
+
+.metro-songlist {
+    width: clamp(260px, 100%, 500px);
+  }
+  
+  .metro-songlist .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    /* max-width: 15%; */
+    width: 0.1vw
+  }
+  
+  .details.genres {
+    white-space: nowrap;
+    border: 1px solid red
+  }
+  
+  .metro-songlist .index {
+    width: 0.2%;
+  }
+  
+  .songlist-nav-ctn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .songlist-nav-btn {
+    cursor: pointer;
+    font-size: 2.5em;
+  }
+  
+  .songList-spinner {
+    font-size: 5em;
+    // height: 100%;
+    width: 100%
+  }
