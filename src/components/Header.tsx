@@ -16,7 +16,9 @@ function Header() {
             <Link to="/contact">Contact</Link>
           </li>
           <li>
-            <Link to="http://www.philippedehovre.com/#projects">Contact</Link>
+            <Link to="http://www.philippedehovre.com/#projects" target="_blank">
+              Website
+            </Link>
           </li>
         </ul>
       </nav>
