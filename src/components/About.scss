@@ -1,0 +1,62 @@
+@import '../variables.scss';
+
+.about-section {
+    overflow-x: hidden;
+
+    
+    .about-ctn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        > p{ 
+            text-align: justify;
+            padding: .5em;
+            width: 80%;
+        }
+
+        
+        #about-title {
+            text-align: right;
+            color: $accent;
+            margin-bottom: 0;
+            font-size: 4em;
+            display: flex;
+            align-items: center;
+        }
+    }
+    
+}
+
+@media (min-width: 768px) {
+    .about-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        height: 100svh;
+        width: 100svw;
+        margin-bottom: 10em;
+        
+        .about-ctn {
+            gap: 2em;
+            flex-direction: reverse;
+            width: $section-clamp;
+            z-index: 1;
+
+            > P {
+                font-size: 1.5em;;
+            }
+            
+    }
+}
+
+#design-element {
+        content: '';
+        height: 100%;
+        border-left: 7.5px solid $secondary;
+        
+    }
+    
+}
