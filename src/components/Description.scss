@@ -1,0 +1,28 @@
+@import '../variables.scss';
+
+.description-ctn {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 2.5em;
+    margin: 0 0 10% 0;
+    width: 100%;
+    gap: 1em;
+    > h1 {
+        font-size: 2em;
+        color: $accent;
+    }
+
+    > p {
+        font-size: 1.5em;
+        color: white;
+    }
+    
+    > li {
+        font-size: 1.5em;
+
+        > span {
+            color: $accent;
+        }
+    }
+}

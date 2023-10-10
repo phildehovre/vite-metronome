@@ -13,41 +13,33 @@
 
 .metronome-ctn {
   display: flex;
-  gap: 5%;
   justify-content: center;
-  align-items: center;
-  width: 100svw;
-  flex-direction: column;
+  align-items: flex-start;
+  width: $section-clamp;
 }
-
-.metro-right {
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
 
 .metronome {
-  width: clamp(300px, 80%, 500px);
+  height: auto;
+  min-width: 600px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em;
+  padding: 2.5em;
   background-color: $bg-color;
   border-radius: 26px;
   box-shadow: $secondary 15px 15px 100px;
+  transition: 150ms all cubic-bezier(.49,.03,.61,1.93);
+  
+  &.pulse{
+    box-shadow: $secondary 15px 15px 300px;
+    transition: 150ms ease-in-out all cubic-bezier(.49,.03,.61,1.93); 
+  }
 }
 
 .metronome h1 {
-  /* display: none; */
-  /* border: 1px solid red; */
   color: $accent;
   font-size: 3em;
-  /* text-transform: uppercase; */
-  font-family: Helvetica, sans-serif
 }
 
 .metro-display {
@@ -58,7 +50,6 @@
   justify-content: center;
   align-items: center;
   background-color: $secondary;
-  height: 4em;
 }
 
 
@@ -93,7 +84,6 @@
 }
 
 .metro-display {
-  height: 150px;
 
   >.metro-btn {
     height: 100%;
@@ -257,7 +247,7 @@ input[type=range]:focus::-ms-fill-upper {
 .metro-controls {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 350px;
   width: 100%;
   align-items: center;
   position: relative;
@@ -294,7 +284,12 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .play:hover {
-  background-color: $secondary;
+box-shadow: $style-neon-shadow;
+
+&:active {
+  box-shadow: none;
+  color: $bg-color;
+}
 
 }
 
@@ -305,7 +300,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   top: 25%;
   left: 35%;
-  background-image: url('../assets/playicon.png');
+  background-image: url('../assets/play.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -401,27 +396,32 @@ input[type=range]:focus::-ms-fill-upper {
   border: .5em solid $accent;
   height: 10em;
   width: 10em;
-  background-color: var(--ternary);
+  background-color: transparent;
   border-radius: 250px;
   position: relative;
   color: $accent;
-  margin-bottom: 4em
+  margin-bottom: 4em;
 }
 
 .pause:after {
   content: '';
+  background-image: url('../assets/pause.svg');
   height: 55%;
   width: 40%;
   position: absolute;
   top: 23%;
   left: 30%;
-  background-image: url('../../assets/pauseicon-final.png');
   background-size: cover;
   background-position: center;
 }
 
 .pause:hover {
-  background-color: $accent;
+  box-shadow: $style-neon-shadow;
+
+  &:active {
+    box-shadow: none;
+    color: $bg-color;
+  }
 }
 
 /*============================================= Dropdown Styling ======================================= */
@@ -472,4 +472,24 @@ input[type=range]:focus::-ms-fill-upper {
 
 .metro-dropdown-item:hover {
   background-color: var(--ternary);
+}
+
+
+/* Define the pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: $style-neon-shadow;
+  }
+  100% {
+    box-shadow: $style-neon-shadow-no-spread;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .metronome-ctn {
+    flex-direction: column  ;
+    align-items: center;
+
+  }
 }

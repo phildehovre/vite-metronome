@@ -10,11 +10,7 @@ import Woodblock from "../assets/Woodblock.mp3";
 import SongList from "./SongList";
 import Description from "./Description";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faBurger,
-  faHamburger,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Metronome = ({
   showSongs,
@@ -32,6 +28,7 @@ const Metronome = ({
   const [dropdownOpen, setDropdownOpen] = useState(false);
   // const [searchTerm, setSearchTerm] = useState('Search')
   const [listSize, setListSize] = useState(12);
+  const [pulse, setPulse] = useState(false);
 
   const [cowbell] = useSound(Cowbell);
   const [woodblock] = useSound(Woodblock);
@@ -77,14 +74,19 @@ const Metronome = ({
   };
 
   // Tempo setter:
-
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      trigger();
-    }, tempoInterval);
-    return () => {
-      clearInterval(intervalId);
-    };
+    if (play) {
+      const intervalId = setInterval(() => {
+        trigger();
+        setPulse(true);
+        setTimeout(() => {
+          setPulse(false);
+        }, tempoInterval - tempoInterval * 0.1);
+      }, tempoInterval);
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
   }, [play, tempoInterval, soundEffect, trigger]);
 
   useEffect(() => {
@@ -117,7 +119,7 @@ const Metronome = ({
   return (
     <div className="metronome-ctn">
       <Description />
-      <div className="metronome">
+      <div className={`metronome ${pulse ? "pulse" : ""}`}>
         <h1>Metronome</h1>
         <div className="metro-display">
           <div className="metro-btn decrement" onClick={decrement}>
@@ -140,6 +142,7 @@ const Metronome = ({
             onClick={startClick}
             className={`metro-btn ${play ? `pause` : `play`} noSelect`}
             id="metro-there"
+            style={{ animationDuration: `${tempoInterval}ms` }}
           ></div>
           <div
             className="metro-btn-generate"

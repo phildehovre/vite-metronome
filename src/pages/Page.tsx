@@ -6,9 +6,9 @@ function Page() {
   const [showSongs, setShowSongs] = useState(false);
 
   return (
-    <div className="page-ctn">
+    <main className="page-ctn">
       <Metronome showSongs={showSongs} setShowSongs={setShowSongs} />
-    </div>
+    </main>
   );
 }
 

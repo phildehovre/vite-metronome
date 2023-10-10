@@ -17,10 +17,11 @@ $secondary-o1: rgba(0, 128, 128, 0.164);
 // Styles
 
 $style-neon-shadow: $secondary 15px 15px 100px;
+$style-neon-shadow-no-spread: $secondary 15px 15px 0px;
 
 // Layout
 
-$section-clamp: clamp(275px, 100%, 1000px);
+$section-clamp: clamp(400px, 80svw, 2000px);
 
 // Colors
 
