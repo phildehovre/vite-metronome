@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .songcard {
     width: content;
     height: 3em;
@@ -6,27 +8,29 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--ternary);
+    background-color: $secondary-o2;
     border-radius: 6px;
-    color: black;
-    transition: ease-in 250ms
+    color: white;
+    transition: ease-in 250ms;
   }
   
   .songcard:hover {
-    background-color: white;
+    background-color: $secondary;
+    box-shadow: $secondary 5px 5px 20px;
   }
   
   
   .songcard-left {
+    height: 1em;
+    flex-wrap: nowrap;
     display: flex;
     align-items: center;
+    
+    .songcard-title {
+      text-overflow: ellipsis;
+    }
   }
   
-  .songcard-left i {
-    padding: .2em;
-    font-size: 2em;
-    color: var(--primary)
-  }
   
   
   

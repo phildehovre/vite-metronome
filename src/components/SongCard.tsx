@@ -25,12 +25,19 @@ function SongCard(props: { song: Song }) {
     return undefined;
   };
 
+  const formatTitle = (title: string) => {
+    if (title.length > 30) {
+      return title.split(" ").slice(0, 5).join(" ") + "...";
+    }
+    return title;
+  };
+
   return (
     <>
       <div className="songcard">
         <div className="songcard-left">
           <div>
-            <div className="songcard-title">{song.song_title}</div>
+            <div className="songcard-title">{formatTitle(song.song_title)}</div>
             <div className="songcard-artist">{song.artist.name}</div>
           </div>
         </div>

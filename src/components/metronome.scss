@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 *,
 *:before,
 *:after {
@@ -34,15 +36,15 @@
   flex-direction: column;
   align-items: center;
   padding: 2em;
-  background-color: #81A1BC;
+  background-color: $bg-color;
   border-radius: 26px;
-  box-shadow: var(--ternary) 15px 15px 1px;
+  box-shadow: $secondary 15px 15px 100px;
 }
 
 .metronome h1 {
   /* display: none; */
   /* border: 1px solid red; */
-  color: white;
+  color: $accent;
   font-size: 3em;
   /* text-transform: uppercase; */
   font-family: Helvetica, sans-serif
@@ -55,7 +57,7 @@
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  background-color: var(--secondary);
+  background-color: $secondary;
   height: 4em;
 }
 
@@ -70,14 +72,15 @@
 
 
 .metro-btn.decrement {
+  height: 100%;
   text-align: center;
   align-items: center;
   border-radius: 16px 0 0 16px;
 }
 
 .metro-btn.decrement:hover {
-  background-color: white;
-  color: var(--primary)
+  background-color: $bg-color;
+  color: $secondary
 }
 
 .metro-btn.increment {
@@ -85,20 +88,32 @@
 }
 
 .metro-btn.increment:hover {
-  background-color: white;
-  color: var(--primary)
+  background-color: $accent;
+  color: $accent
 }
 
-.metro-display>.metro-btn {
-  height: 100%;
-  text-align: center;
-  align-items: center;
-  font-size: 3em;
-  color: white
+.metro-display {
+  height: 150px;
+
+  >.metro-btn {
+    height: 100%;
+    text-align: center;
+    background-color: $bg-color;
+    border: 1px solid $secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    color: $accent;
+    transition: 150ms ease-in;
+  }
 }
+
 
 .metro-display>.metro-btn:hover {
-  background-color: white;
+  box-shadow: $secondary 5px 5px 50px;
+  background-color: $accent;
+  color: black;
 }
 
 
@@ -109,7 +124,7 @@ input[type=range] {
   width: 100%;
   /* Specific width is required for Firefox. */
   background: transparent;
-  /* Otherwise white in Chrome */
+  /* Otherwise $accent in Chrome */
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -148,7 +163,7 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 90%;
   height: 8.4px;
   cursor: pointer;
-  background: var(--secondary);
+  background: $secondary;
   border-radius: 1.3px;
 }
 
@@ -266,12 +281,12 @@ input[type=range]:focus::-ms-fill-upper {
 .play {
   box-sizing: content-box;
   z-index: 10;
-  border: .5em solid var(--primary);
+  border: .5em solid $accent;
   /* height: 55%;
     width: 55%; */
   height: 10em;
   width: 10em;
-  background-color: var(--ternary);
+  background-color: $bg-color;
   border-radius: 250px;
   position: relative;
   transition: ease-in 150ms;
@@ -279,7 +294,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .play:hover {
-  background-color: white;
+  background-color: $secondary;
 
 }
 
@@ -298,19 +313,23 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .metro-btn-tap {
-  height: 30%;
-  width: 35%;
-  border: none;
-  background-color: var(--ternary);
+  height: 5em;
+  width: 5em;
+  border: $secondary 1px solid;
+  background-color: $bg-color;
   border-radius: 25px;
   position: absolute;
   top: 20%;
   right: 0%;
   z-index: 9;
-  color: white;
+  color: $accent;
   transition: ease-in 150ms;
-  cursor: pointer
+  cursor: pointer;
+
+
 }
+
+
 
 /* .metro-btn-tap:after { */
 .metro-btn-tap .outer {
@@ -318,11 +337,11 @@ input[type=range]:focus::-ms-fill-upper {
   width: 30px;
   height: 2em;
   position: relative;
-  border: 5px solid var(--primary);
+  border: 5px solid $accent;
   border-radius: 50%;
   top: 50%;
   left: 50%;
-  transform: translate(30%, -50%)
+  transform: translate(-50%, -50%)
 }
 
 /* .metro-btn-tap:before { */
@@ -333,7 +352,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   top: 50%;
   right: 50%;
-  border: 5px solid var(--primary);
+  border: 5px solid $accent;
   border-radius: 50%;
   transform: translate(50%, -50%);
   transition: ease-in 250ms transform
@@ -341,64 +360,51 @@ input[type=range]:focus::-ms-fill-upper {
 
 
 .metro-btn-tap:hover {
-  background-color: white;
-  transform: scale(1.05)
+  box-shadow: $style-neon-shadow;
+
+  &:active {
+    box-shadow: none;
+    color: $bg-color;
+  }
 }
 
 .metro-btn-generate {
-  height: 30%;
-  width: 35%;
+  height:5em;
+  width: 5em;
   border: none;
-  background-color: var(--ternary);
+  background-color: transparent;
   border-radius: 25px;
+  border: 1px solid $secondary;
   position: absolute;
   top: 20%;
   left: 0%;
   z-index: 9;
-  color: white;
+  color: $accent;
   transition: ease-in 150ms;
   cursor: pointer;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.metro-btn-generate:after {
-  content: '';
-  width: 2em;
-  height: .85em;
-  position: absolute;
-  border-top: 5px solid var(--primary);
-  border-bottom: 5px solid var(--primary);
-  top: 50%;
-  left: 20%
-}
-
-.metro-btn-generate:before {
-  content: '';
-  width: 2em;
-  height: .5em;
-  position: absolute;
-  top: 38%;
-  left: 20%;
-  border-bottom: 5px solid var(--primary)
-}
 
 .metro-btn-generate:hover {
   opacity: 100%;
-  background-color: white;
-  transform: scale(1.05);
+  box-shadow: $style-neon-shadow;
 }
 
 
 .pause {
   box-sizing: content-box;
   z-index: 10;
-  border: .5em solid var(--primary);
+  border: .5em solid $accent;
   height: 10em;
   width: 10em;
   background-color: var(--ternary);
   border-radius: 250px;
   position: relative;
-  color: white;
+  color: $accent;
   margin-bottom: 4em
 }
 
@@ -415,14 +421,14 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .pause:hover {
-  background-color: white;
+  background-color: $accent;
 }
 
 /*============================================= Dropdown Styling ======================================= */
 
 .metro-dropdown-header {
   padding: 1em;
-  background-color: var(--secondary);
+  background-color: $secondary;
   border-radius: 26px;
   width: 100%;
   transition: ease-in 150ms;
@@ -458,7 +464,7 @@ input[type=range]:focus::-ms-fill-upper {
 .metro-dropdown-item {
   transition: ease-in 150ms;
   padding: 1em;
-  background-color: var(--secondary);
+  background-color: $secondary;
   border-radius: 26px;
   width: 100%;
   margin: .5em 0

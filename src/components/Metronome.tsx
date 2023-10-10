@@ -9,6 +9,12 @@ import Cowbell from "../assets/Cowbell.mp3";
 import Woodblock from "../assets/Woodblock.mp3";
 import SongList from "./SongList";
 import Description from "./Description";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faBurger,
+  faHamburger,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Metronome = ({
   showSongs,
@@ -138,7 +144,9 @@ const Metronome = ({
           <div
             className="metro-btn-generate"
             onClick={() => handleDisplaySongsList()}
-          ></div>
+          >
+            <FontAwesomeIcon icon={faBars} size="2x" />
+          </div>
 
           <div onClick={tapTempo} className="metro-btn-tap">
             <div className="outer">

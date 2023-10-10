@@ -43,12 +43,14 @@ function SongList(props: any) {
               icon={faChevronLeft}
               className="songlist-nav-btn"
               onClick={() => handleNavClick("prev")}
+              size="xl"
             />
             <div>Page {pageCounter}</div>
             <FontAwesomeIcon
               icon={faChevronRight}
               className="songlist-nav-btn"
               onClick={() => handleNavClick("next")}
+              size="xl"
             />
           </div>
         </>
@@ -80,6 +82,8 @@ function SongList(props: any) {
       }
     }
   };
+
+  if (!showSongs) return;
 
   return (
     <>
