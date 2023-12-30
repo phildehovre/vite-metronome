@@ -21,7 +21,7 @@
 
 .metronome {
   height: auto;
-  min-width: 600px;
+  min-width: 400px;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -30,12 +30,12 @@
   background-color: $bg-color;
   border-radius: 26px;
   box-shadow: $secondary 15px 15px 100px;
-  transition: 150ms all cubic-bezier(.49,.03,.61,1.93);
+  transition: 50ms all cubic-bezier(.49,.03,.61,1.93);
   
-  &.pulse{
-    box-shadow: $secondary 15px 15px 300px;
-    transition: 150ms ease-in-out all cubic-bezier(.49,.03,.61,1.93); 
-  }
+  // &.pulse{
+  //   box-shadow: $secondary 15px 15px 300px;
+  //   transition: 50ms ease-in-out all cubic-bezier(.49,.03,.61,1.93); 
+  // }
 }
 
 .metronome h1 {

@@ -11,13 +11,16 @@ import {
   faChevronRight,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+import UnstyledSelectBasic from "./Select";
 
 function SongList(props: any) {
   const { bpm, showSongs } = props;
-  const [songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState<Song[]>([]);
   const [listStart, setListStart] = useState(0);
   const [listEnd, setListEnd] = useState(12);
   const [pageCounter, setPageCounter] = useState(1);
+  const [genres, setGenres] = useState<string[]>([]);
+  const [selectedGenre, setSelectedGenre] = useState<string>("");
 
   const { data, isLoading } = useQuery(
     ["tempoData", bpm],
@@ -27,10 +30,26 @@ function SongList(props: any) {
     }
   );
 
-  //   console.log("data", data, showSongs, songs);
+  useEffect(() => {
+    if (!isLoading && data?.length > 0) {
+      const genres = data?.map((song: Song) => {
+        return song.artist.genres;
+      });
+      const flattenedGenres: string[] = genres?.flat();
+      const uniqueGenres: string[] = [...new Set(flattenedGenres)];
+      setGenres(uniqueGenres);
+    }
+  }, []);
 
   useEffect(() => {
-    setSongs(data?.slice(listStart, listEnd));
+    if (selectedGenre === "") {
+      setSongs(data?.slice(listStart, listEnd));
+    } else {
+      const filteredSongs = data?.filter((song: Song) => {
+        return song.artist.genres.includes(selectedGenre);
+      });
+      setSongs(filteredSongs?.slice(listStart, listEnd));
+    }
   }, [data, listStart, listEnd]);
 
   const renderSongListWithNav = () => {
@@ -85,9 +104,14 @@ function SongList(props: any) {
 
   if (!showSongs) return;
 
+
+
   return (
     <>
       <div className={`metro-songlist ${showSongs ? "open" : "closed"}`}>
+        {genres.length > 0 && (
+          <UnstyledSelectBasic options={genres} onChange={setSelectedGenre} />
+        )}
         {!isLoading && data?.length > 0 ? (
           renderSongListWithNav()
         ) : (

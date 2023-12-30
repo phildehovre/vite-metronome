@@ -11,6 +11,7 @@ import SongList from "./SongList";
 import Description from "./Description";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import TapTempo from "./TapTempo";
 
 const Metronome = ({
   showSongs,
@@ -22,11 +23,9 @@ const Metronome = ({
   const [play, setPlay] = useState(false);
   const [bpm, setBpm] = useState(120);
   const [tempoInterval, setTempoInterval] = useState<number>(0);
-  const [tapped, setTapped] = useState<number>();
   const [soundEffect, setSoundEffect] = useState("sidestick");
   const [debouncedBpm, setDebouncedBpm] = useState(bpm);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const [searchTerm, setSearchTerm] = useState('Search')
   const [listSize, setListSize] = useState(12);
   const [pulse, setPulse] = useState(false);
 
@@ -35,19 +34,6 @@ const Metronome = ({
   const [sidestick] = useSound(Sidestick);
 
   // ========================== Tap Tempo Logic:
-
-  const tapTempo = () => {
-    if (tapped) {
-      let elapsed = new Date().getTime() - tapped;
-      if (elapsed < 2500) {
-        const tappedBpm = Math.round((6000 / elapsed) * 10);
-        setBpm(tappedBpm);
-      } else {
-        setTapped(new Date().getTime());
-      }
-    }
-    setTapped(new Date().getTime());
-  };
 
   const playSound = useCallback(() => {
     if (soundEffect === "cowbell") {
@@ -142,7 +128,6 @@ const Metronome = ({
             onClick={startClick}
             className={`metro-btn ${play ? `pause` : `play`} noSelect`}
             id="metro-there"
-            style={{ animationDuration: `${tempoInterval}ms` }}
           ></div>
           <div
             className="metro-btn-generate"
@@ -151,11 +136,7 @@ const Metronome = ({
             <FontAwesomeIcon icon={faBars} size="2x" />
           </div>
 
-          <div onClick={tapTempo} className="metro-btn-tap">
-            <div className="outer">
-              <div className="inner"></div>
-            </div>
-          </div>
+          <TapTempo setBpm={setBpm} />
           <div
             className="metro-dropdown-header"
             onClick={() => setDropdownOpen(!dropdownOpen)}
