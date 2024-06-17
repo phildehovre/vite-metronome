@@ -7,3 +7,6 @@ The metronome offers the basic functionality you would expect from a hand-held d
 Combined with the "tap tempo" button, this is a powerful tool for DJ's looking to consolidate their playlists and unlock their creativity with seamless transitions.
 
 https://metronomeapp.vercel.app/
+
+
+**not generated with chatGPT**
